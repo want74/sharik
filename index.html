@@ -787,7 +787,7 @@
         //Получение клика по сабмиту
         let btnClick = document.querySelector('.btnSov');
         // количество запостщинных    
-        let info = 1;
+        //let info = 1;
         //Событие онклик 
         btnClick.onclick = function() {
             //поиск  инпута с ником
@@ -805,14 +805,14 @@
             //Последняя колонна
             let chat = document.querySelector('.chat');
             console.log(nick, heading, text)
-            console.log(info)
+            //console.log(info)
             //Проверка количиства запостщенных
-            if (info < 4) {
+            //if (info < 4) {
                 chat.innerHTML += '<div class="card col-2 mx-auto" style="margin:5vh;"><div class="card-body"><h5 class="card-title">' + heading + '</h5><h6 class="card-subtitle mb-2 text-muted">От: ' + nick + '</h6><p class="card-text">' + text + '</p></div></div>';
-                info = info + 1
-            } else {
-                alert('Андрюха жопа, места ноль осталось');
-            }
+                //info = info + 1
+            //} else {
+                //alert('Андрюха жопа, места ноль осталось');
+            //}
 
         }
 
@@ -844,7 +844,7 @@
             //Проверка количиства запостщенных
             //if (info < 4) {
             chal.innerHTML += '<div class="card col-2 mx-auto" style="margin:5vh;"><div class="card-body"><h5 class="card-title">' + headingChal + '</h5><h6 class="card-subtitle mb-2 text-muted">От: ' + nickChal + '</h6><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#a' + infoChal + '">Начать</button></div><!-- Modal --><div class="modal fade" id="a' + infoChal + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalScrollableTitle">' + headingChal + '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">' + textChal + '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Я выполнил!</button></div></div></div></div>';
-            info = info + 1
+            //info = info + 1
             //} else {
             //alert('Андрюха жопа, места ноль осталось, спаси "попу мыть"');
             //}
