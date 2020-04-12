@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>s
+    <style>
+        body {
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .scene {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            min-height: 100vh;
+            z-index: 0;
+        }
+
+        .layer {
+            position: absolute;
+            left: -10%;
+            right: 0;
+            width: 110%;
+            height: 100%;
+        }
+
+        .layer-bg {
+            background: url('img/bg.jpg') center no-repeat;
+            background-size: cover;
+        }
+
+        .layer-1 {
+            background: url('img/layer1.png') center no-repeat;
+            background-size:contain;
+            height: 15%;    
+            
+        }
+
+        .layer-2 {
+            background: url('img/layer2.png') center no-repeat;
+            background-size:contain;
+            height: 15%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <div data-speed="10" class="layer layer-bg"></div>
+        <div data-speed="40" class="layer layer-1"></div>
+        <div data-speed="80" class="layer layer-2"></div>
+    </div>
+    <script>
+        function parallax(event) {
+            this.querySelectorAll('.layer').forEach(layer =>{
+                let speed = layer.getAttribute('data-speed')
+                layer.style.transform = 'translateX('+event.clientX*speed/1000+'px)'
+            })
+        }
+        document.addEventListener('mousemove', parallax);
+
+    </script>
+</body>
+
+</html>

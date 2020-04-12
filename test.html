@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>s
+    <style>
+        body {
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .scene {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            min-height: 100vh;
+            z-index: 0;
+        }
+
+        .layer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 100%;
+        }
+
+        .layer-bg {
+            background: url('img/disco.jpg') center no-repeat;
+            background-size: cover;
+            position: absolute;
+            left: -10%;
+            transition: 2s;
+        }
+
+        .layer1 {
+            background: url('img/man1.png') center no-repeat;
+            background-size: contain;
+            height: 40%;
+            left: 60%;
+            top: 60%;
+            transition: 0.7s;
+            visibility: hidden;
+
+        }
+
+        .layer2 {
+            background: url('img/man3.png') center no-repeat;
+            background-size: contain;
+            height: 40%;
+            left: 85%;
+            top: 60%;
+            transition: 0.7s;
+            visibility: hidden;
+        }
+
+        .layer3 {
+            background: url('img/man1.png') center no-repeat;
+            background-size: contain;
+            height: 40%;
+            left: -80%;
+            top: 60%;
+            transition: 0.7s;
+            visibility: hidden;
+
+        }
+
+        .layer4 {
+            background: url('img/man3.png') center no-repeat;
+            background-size: contain;
+            height: 40%;
+            left: -50%;
+            top: 60%;
+            transition: 0.7s;
+            visibility: hidden;
+        }
+
+        .layer5 {
+            background: url('img/man1.png') center no-repeat;
+            background-size: contain;
+            height: 40%;
+            left: -20%;
+            top: 60%;
+            transition: 0.7s;
+            visibility: hidden;
+
+        }
+
+        .layer6 {
+            background: url('img/man3.png') center no-repeat;
+            background-size: contain;
+            height: 40%;
+            left: 20%;
+            top: 60%;
+            transition: 0.7s;
+            visibility: hidden;
+        }
+
+        .layer-effect {
+            width: 100%;
+            height: 100vh;
+            visibility: hidden;
+            transition: 2s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <div data-speed="10" class="layer layer-bg"></div>
+        <div data-speed="40" class="layer layer1"></div>
+        <div data-speed="80" class="layer layer2"></div>
+        <div data-speed="40" class="layer layer3"></div>
+        <div class="info" style="color: white; font-size: 20px;position: absolute;left: 40%;top:90%;text-align: center">
+            <a href="#" style="text-decoration: none;color: white;"><h3 >Нажмите</h3></a>
+        </div>
+        <div data-speed="80" class="layer layer4"></div>
+        <div data-speed="40" class="layer layer5"></div>
+        <div data-speed="80" class="layer layer6"></div>
+        <div data-speed="1" class="layer"><img src="img/effect.png" class="layer-effect"></div>
+    </div>
+
+    <audio src="img/music1.mp3" class="music1"></audio>
+    <audio src="img/music2.mp3" class="music2"></audio>
+    <audio src="img/music3.mp3" class="music3"></audio>
+    <script>
+        /*function parallax(event) {
+            if (event.which == 32) {
+                console.log('ok')
+                document.querySelectorAll('.layer').forEach(layer => {
+                    let speed = layer.getAttribute('data-speed')
+                    layer.style.transform = 'translateX(' + speed / 3 + 'px)'
+                    console.log(layer)
+                })
+
+            } else {
+                console.log('bag')
+            }
+        }*/
+        let music1 = document.querySelector('.music1')
+
+
+        function perehod(event) {
+            if (event.which == 32) {
+                
+                let layer1 = document.querySelector('.layer1')
+                let layer2 = document.querySelector('.layer2')
+                let layer3 = document.querySelector('.layer3')
+                let layer4 = document.querySelector('.layer4')
+                let layer5 = document.querySelector('.layer5')
+                let layer6 = document.querySelector('.layer6')
+                let speed1 = layer1.getAttribute('data-speed')
+
+                let effect = document.querySelector('.layer-effect');
+                effect.style.visibility = 'visible'
+                layer1.style.visibility = 'visible'
+                layer2.style.visibility = 'visible'
+                layer3.style.visibility = 'visible'
+                layer4.style.visibility = 'visible'
+                layer5.style.visibility = 'visible'
+                layer6.style.visibility = 'visible'
+
+                
+                let bg = document.querySelector('.layer-bg')
+                bg.style.background = "url('img/chill.jpg') center no-repeat";
+
+
+                bg.style.backgroundSize = "110%";
+                
+                music1.play()
+
+                let timerTrue = true;
+                let final1;
+                let final2;
+
+                let timerId = setTimeout(function tick() {
+
+                    if (timerTrue == true) {
+                        final1 = '5';
+                        timerTrue = false;
+                    } else {
+                        final1 = '-5'
+                        timerTrue = true;
+                    }
+
+                    layer1.style.backgroundSize = '16';
+                    layer1.style.height = '45%';
+                    layer1.style.transform = 'rotate(' + final1 + 'deg)'
+
+                    layer3.style.backgroundSize = '16';
+                    layer3.style.height = '45%';
+                    layer3.style.transform = 'rotate(' + final1 + 'deg)'
+
+                    layer5.style.backgroundSize = '16';
+                    layer5.style.height = '45%';
+                    layer5.style.transform = 'rotate(' + final1 + 'deg)'
+
+                    let layer2 = document.querySelector('.layer2')
+                    let speed2 = layer2.getAttribute('data-speed')
+
+                    if (timerTrue == true) {
+                        final2 = '5'
+                        timerTrue = true;
+                    } else {
+                        final2 = '-5'
+                        timerTrue = false;
+                    }
+
+                    layer2.style.backgroundSize = '16';
+                    layer2.style.height = '45%';
+                    layer2.style.transform = 'rotate(' + final2 + 'deg)'
+
+                    layer4.style.backgroundSize = '16';
+                    layer4.style.height = '45%';
+                    layer4.style.transform = 'rotate(' + final2 + 'deg)'
+
+                    layer6.style.backgroundSize = '16';
+                    layer6.style.height = '45%';
+                    layer6.style.transform = 'rotate(' + final2 + 'deg)'
+
+
+
+
+                    timerId = setTimeout(tick, 400); // (*)
+                }, 400);
+            } else if(event.which == 13) {
+                document.location.href = "trek2.html";
+            }
+
+
+        }
+
+
+
+
+        function parallax(event) {
+
+            this.querySelectorAll('.layer').forEach(layer => {
+                let speed = layer.getAttribute('data-speed')
+                layer.style.transform = 'translateX(' + event.clientX * speed / 1000 + 'px)'
+            })
+
+        }
+        document.addEventListener('mousemove', parallax)
+        document.addEventListener('keypress', perehod);
+
+
+
+
+
+        //Поменять картинки на паралаксе
+        //Картинки поменять в каталоге
+        // католог подредачить
+        //
+
+    </script>
+</body>
+
+</html>
